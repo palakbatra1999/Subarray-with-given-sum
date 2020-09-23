@@ -1,0 +1,42 @@
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+int main() {
+int t;
+cin>>t;
+while(t--)
+{
+    unordered_map<int,int> m;
+    int n,k,left=0,right=0;
+    cin>>n>>k;
+    int arr[n+1],i,sum=0;
+    for(i=1;i<=n;i++)
+   { cin>>arr[i];
+       sum+=arr[i];
+       if(sum==k)
+       {
+           right=i;
+               left=1;
+              cout<<left<<" "<<right<<endl;
+              return 0;
+       }
+      if(m.find(sum-k)!=m.end())
+       {
+         right=i;
+               left=m[sum-k]+1;
+              cout<<left<<" "<<right<<endl;
+              return 0;
+       }
+       if(m.find(sum)==m.end())
+       m[sum]=i;
+       
+   }
+    if(left==0&&right==0)
+    cout<<"-1"<<endl;
+   
+    
+    
+}
+	return 0;
+}
